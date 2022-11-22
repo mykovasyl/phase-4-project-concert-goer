@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_22_160451) do
+ActiveRecord::Schema.define(version: 2022_11_22_161541) do
 
   create_table "concerts", force: :cascade do |t|
     t.string "name"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2022_11_22_160451) do
     t.string "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "quantity"
+    t.integer "total_tickets"
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2022_11_22_160451) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
     t.integer "concert_id", null: false
+    t.integer "quantity"
     t.index ["concert_id"], name: "index_tickets_on_concert_id"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
