@@ -4,14 +4,14 @@ class Concert < ApplicationRecord
 
   validates :name, presence: true
 
-  @total_available
+  @total_available = self.total_tickets
 
   def available_tickets
     render json: @total_available
   end
 
   def tickets_sold
-    sold = self.quantity - @total_available
+    sold = self.total_tickets - @total_available
     render json: sold, status: :ok
   end
 

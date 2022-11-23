@@ -1,3 +1,3 @@
 class TicketSerializer < ActiveModel::Serializer
-  attributes :id, :name, :date, :time, :city, :state
+  attributes :id, :name
 end

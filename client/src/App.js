@@ -1,23 +1,65 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import NavBar from "./NavBar";
+import Home from "./Home";
+import Concerts from "./Concerts";
+import SignUp from "./SignUp";
+import LogIn from "./LogIn";
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(null);
+
+  // useEffect(() => {
+  //   fetch("/me")
+  //     .then((resp) => resp.json())
+  //     .then((user) => setCurrentUser(user));
+  // }, []);
+
+  const handleLogOut = () => {
+    setCurrentUser({});
+    fetch("/logout", {
+      method: "DELETE",
+    });
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar currentUser={currentUser} />
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <Home currentUser={currentUser} handleLogOut={handleLogOut} />
+          }
+        />
+        {/* <Route
+          path="/students"
+          element={<Students students={students} setStudents={setStudents} />}
+        /> */}
+        <Route
+          path="/concerts"
+          element={<Concerts currentUser={currentUser} />}
+        />
+        <Route
+          path="/signup"
+          element={<SignUp setCurrentUser={setCurrentUser} />}
+        />
+        <Route
+          path="/login"
+          element={<LogIn setCurrentUser={setCurrentUser} />}
+        />
+        <Route
+          path="*"
+          element={
+            <>
+              <h1>404 path not found</h1>
+              <h3>Try using the following paths:</h3>
+            </>
+          }
+        />
+      </Routes>
     </div>
   );
 }

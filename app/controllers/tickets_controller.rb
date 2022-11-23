@@ -6,15 +6,18 @@ class TicketsController < ApplicationController
   end
 
   def create
+    # if needs_update?
+    # update number of tickets in quantity column by adding
+    # else
     ticket = Ticket.create!(ticket_params)
     render json: ticket, status: :created
   end
 
-  def update
-    ticket_to_update = find_ticket
-    ticket_to_update.update!(ticket_params)
-    render json: ticket, status: :accepted
-  end
+  # def update
+  #   ticket_to_update = find_ticket
+  #   ticket_to_update.update!(ticket_params)
+  #   render json: ticket, status: :accepted
+  # end
 
   def destroy
     ticket_to_delete = find_ticket
@@ -22,15 +25,14 @@ class TicketsController < ApplicationController
     head :no_content
   end
 
-private
+  private
 
-def ticket_params
-  params.permit(:name, :grade)
-end
+  def ticket_params
+    params.permit(:name, :grade)
+  end
 
-def find_ticket
-  Ticket.find(params[:id])
-end
+  def find_ticket
+    Ticket.find(params[:id])
+  end
 
-  
 end
