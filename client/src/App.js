@@ -18,7 +18,7 @@ function App() {
   // }, []);
 
   const handleLogOut = () => {
-    setCurrentUser({});
+    setCurrentUser(null);
     fetch("/logout", {
       method: "DELETE",
     });

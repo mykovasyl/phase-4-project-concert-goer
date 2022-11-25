@@ -13,7 +13,7 @@ function Concerts({ currentUser }) {
         console.log(concerts);
         setConcerts(concerts);
       });
-  }, [concerts]);
+  }, []);
 
   const navigate = useNavigate();
 

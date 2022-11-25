@@ -19,14 +19,9 @@ function LogIn({ setCurrentUser }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(login),
     })
-      .then((resp) => {
-        if (resp.ok) {
-          resp.json();
-        } else {
-          alert("Invalid username or password");
-        }
-      })
+      .then((resp) => resp.json())
       .then((loggedInUser) => {
+        console.log(loggedInUser);
         setCurrentUser(loggedInUser);
         navigate("/");
       });

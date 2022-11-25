@@ -12,7 +12,7 @@ function NavBar({ currentUser }) {
       <Link as={Link} to="/" style={linkStyling}>
         Home
       </Link>
-      <Link as={Link} to="/yourtickets" style={linkStyling}>
+      {/* <Link as={Link} to="/yourtickets" style={linkStyling}>
         Your tickets
       </Link>
       <Link as={Link} to="/concerts" style={linkStyling}>
@@ -23,7 +23,7 @@ function NavBar({ currentUser }) {
       </Link>
       <Link as={Link} to="/scheduleaconcert" style={linkStyling}>
         Schedule a concert
-      </Link>
+      </Link> */}
       {currentUser ? (
         <>
           <Link as={Link} to="/yourtickets" style={linkStyling}>
