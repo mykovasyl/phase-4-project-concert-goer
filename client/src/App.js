@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import NavBar from "./NavBar";
 import Home from "./Home";
 import Concerts from "./Concerts";
+import ReserveTickets from "./ReserveTickets";
 import SignUp from "./SignUp";
 import LogIn from "./LogIn";
 
@@ -34,10 +35,7 @@ function App() {
             <Home currentUser={currentUser} handleLogOut={handleLogOut} />
           }
         />
-        {/* <Route
-          path="/students"
-          element={<Students students={students} setStudents={setStudents} />}
-        /> */}
+        <Route path="/reservetickets" element={<ReserveTickets />} />
         <Route
           path="/concerts"
           element={<Concerts currentUser={currentUser} />}

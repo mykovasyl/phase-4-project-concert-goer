@@ -4,22 +4,24 @@ class Concert < ApplicationRecord
 
   validates :name, presence: true
 
-  @total_available = self.total_tickets
+#   @total_available ??
 
-  def available_tickets
-    render json: @total_available
-  end
+#   def available_tickets
+#     render json: @total_available
+#   end
 
-  def tickets_sold
-    sold = self.total_tickets - @total_available
-    render json: sold, status: :ok
-  end
+#   def tickets_sold
+#     sold = self.total_tickets - @total_available
+#     render json: sold, status: :ok
+#   end
 
-  def available?(quantity)
-    if(@total_available >= quantity)
-      @total_available = @total_available - quantity
-      render json: quantity, status: :ok
-    else
-      render json: { error: "Quantity of tickets is not available. Please select a quantity up to #{@total_available}."}, status: :unprocessable_entity
-  end
+#   def available?(quantity)
+#     if(@total_available >= quantity)
+#       @total_available = @total_available - quantity
+#       render json: quantity, status: :ok
+#     else
+#       render json: { error: "Quantity of tickets is not available. Please select a quantity up to #{@total_available}."}, status: :unprocessable_entity
+#   end
+# end
+
 end

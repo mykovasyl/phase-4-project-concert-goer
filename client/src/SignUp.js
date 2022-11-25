@@ -99,7 +99,7 @@ function SignUp() {
         </label>
         <button type="submit">Sign up!</button>
         {error.map((err) => {
-          <h4>{err}</h4>;
+          return <h4>{err}</h4>;
         })}
       </form>
     </div>
