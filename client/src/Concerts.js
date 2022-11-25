@@ -1,9 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactModal from "react-modal";
-import { useNavigate } from "react-router-dom";
+import { useFetcher, useNavigate } from "react-router-dom";
 
 function Concerts({ currentUser }) {
   const [modalShow, setModalShow] = useState(false);
+  const [concerts, setConcerts] = useState([]);
+
+  useEffect(() => {
+    fetch("/concerts")
+      .then((resp) => resp.json())
+      .then((concerts) => {
+        console.log(concerts);
+        setConcerts(concerts);
+      });
+  }, [concerts]);
 
   const navigate = useNavigate();
 

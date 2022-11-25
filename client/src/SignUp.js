@@ -16,19 +16,15 @@ function SignUp() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("/usersignup", {
+    fetch("/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(signupForm),
-    }).then((resp) => {
-      if (resp.ok) {
-        resp.json().then(navigate("/login"));
-      } else {
-        resp.json().then((err) => setError(err));
-      }
-    });
+    })
+      .then((resp) => resp.json())
+      .then(navigate("/login"));
   }
 
   function handleInputChange(e) {

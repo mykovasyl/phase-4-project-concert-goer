@@ -28,7 +28,7 @@ class TicketsController < ApplicationController
   private
 
   def ticket_params
-    params.permit(:name, :grade)
+    params.permit(:name, :user_id, :concert_id, :quantity)
   end
 
   def find_ticket
