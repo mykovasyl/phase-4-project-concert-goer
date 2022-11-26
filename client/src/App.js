@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar currentUser={currentUser} />
+      <NavBar currentUser={currentUser} handleLogOut={handleLogOut} />
       <Routes>
         <Route
           exact

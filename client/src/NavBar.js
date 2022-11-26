@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function NavBar({ currentUser }) {
+function NavBar({ currentUser, handleLogOut }) {
   const linkStyling = { padding: "10px" };
 
   return (
@@ -9,9 +9,9 @@ function NavBar({ currentUser }) {
       <Link as={Link} to="/" style={linkStyling}>
         Concert GO-er
       </Link>
-      <Link as={Link} to="/" style={linkStyling}>
+      {/* <Link as={Link} to="/" style={linkStyling}>
         Home
-      </Link>
+      </Link> */}
       {/* <Link as={Link} to="/yourtickets" style={linkStyling}>
         Your tickets
       </Link>
@@ -40,12 +40,18 @@ function NavBar({ currentUser }) {
           </Link>
         </>
       ) : null}
-      <Link as={Link} to="/login" style={linkStyling}>
-        Log in
-      </Link>
-      <Link as={Link} to="/signup" style={linkStyling}>
-        Sign up
-      </Link>
+      {currentUser ? (
+        <button onClick={handleLogOut}>Log out</button>
+      ) : (
+        <>
+          <Link as={Link} to="/login" style={linkStyling}>
+            Log in
+          </Link>
+          <Link as={Link} to="/signup" style={linkStyling}>
+            Sign up
+          </Link>
+        </>
+      )}
     </nav>
   );
 }
