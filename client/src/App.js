@@ -10,12 +10,20 @@ import LogIn from "./LogIn";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
+  const [concerts, setConcerts] = useState([]);
 
-  // useEffect(() => {
-  //   fetch("/me")
-  //     .then((resp) => resp.json())
-  //     .then((user) => setCurrentUser(user));
-  // }, []);
+  useEffect(() => {
+    //   fetch("/me")
+    //     .then((resp) => resp.json())
+    //     .then((user) => setCurrentUser(user));
+
+    fetch("/concerts")
+      .then((resp) => resp.json())
+      .then((concerts) => {
+        setConcerts(concerts);
+        console.log(concerts);
+      });
+  }, []);
 
   const handleLogOut = () => {
     setCurrentUser(null);
@@ -38,7 +46,7 @@ function App() {
         <Route path="/reservetickets" element={<ReserveTickets />} />
         <Route
           path="/concerts"
-          element={<Concerts currentUser={currentUser} />}
+          element={<Concerts currentUser={currentUser} concerts={concerts} />}
         />
         <Route
           path="/signup"
