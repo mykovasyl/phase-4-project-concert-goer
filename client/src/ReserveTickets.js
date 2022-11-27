@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 function ReserveTickets({ currentUser }) {
   const [ticketNumber, setTicketNumber] = useState(0);
-
-  const concert = { id: 2 };
+  const location = useLocation();
+  const { concert, userId } = location.state;
 
   function incrementDown() {
     setTicketNumber(ticketNumber - 1);
@@ -14,11 +15,12 @@ function ReserveTickets({ currentUser }) {
   }
 
   function handleReservation() {
-    fetch("/concerts", {
+    fetch("/tickets", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        user_id: currentUser.id,
+        name: concert.name,
+        user_id: userId,
         concert_id: concert.id,
       }),
     })
@@ -30,7 +32,7 @@ function ReserveTickets({ currentUser }) {
 
   return (
     <div>
-      <h1>Reserve Tickets for Concert name</h1>
+      <h1>Reserve Tickets for {concert.name}</h1>
       <p>Select quantity of tickets to reserve</p>
       {ticketNumber > 0 ? <button onClick={incrementDown}>-</button> : null}
       <p>{ticketNumber}</p>
