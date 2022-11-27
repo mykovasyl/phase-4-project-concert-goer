@@ -5,6 +5,7 @@ import NavBar from "./NavBar";
 import Home from "./Home";
 import Concerts from "./Concerts";
 import ReserveTickets from "./ReserveTickets";
+import Tickets from "./Tickets";
 import SignUp from "./SignUp";
 import LogIn from "./LogIn";
 
@@ -13,15 +14,17 @@ function App() {
   const [concerts, setConcerts] = useState([]);
 
   useEffect(() => {
-    //   fetch("/me")
-    //     .then((resp) => resp.json())
-    //     .then((user) => setCurrentUser(user));
+    fetch("/me")
+      .then((resp) => resp.json())
+      .then((user) => {
+        setCurrentUser(user);
+      });
 
     fetch("/concerts")
       .then((resp) => resp.json())
       .then((concerts) => {
-        setConcerts(concerts);
         console.log(concerts);
+        setConcerts(concerts);
       });
   }, []);
 
@@ -44,6 +47,7 @@ function App() {
           }
         />
         <Route path="/reservetickets" element={<ReserveTickets />} />
+        <Route path="/yourtickets" element={<Tickets />} />
         <Route
           path="/concerts"
           element={<Concerts currentUser={currentUser} concerts={concerts} />}

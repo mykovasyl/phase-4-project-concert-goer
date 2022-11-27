@@ -21,7 +21,6 @@ function LogIn({ setCurrentUser }) {
     })
       .then((resp) => resp.json())
       .then((loggedInUser) => {
-        console.log(loggedInUser);
         setCurrentUser(loggedInUser);
         navigate("/");
       });
