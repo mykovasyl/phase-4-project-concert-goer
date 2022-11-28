@@ -10,7 +10,6 @@ class TicketsController < ApplicationController
     # update number of tickets in quantity column by adding
     # else
     ticket = Ticket.create!(ticket_params)
-    byebug
     render json: ticket, status: :created
   end
 

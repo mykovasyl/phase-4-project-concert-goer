@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Ticket from "./Ticket";
 
 function Tickets() {
   const [tickets, setTickets] = useState([]);
@@ -14,6 +15,9 @@ function Tickets() {
   return (
     <div>
       <h1>Reserved Tickets</h1>
+      {tickets.map((ticket) => {
+        return <Ticket key={ticket.id} ticket={ticket} />;
+      })}
     </div>
   );
 }
