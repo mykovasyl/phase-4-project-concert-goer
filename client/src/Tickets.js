@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Ticket from "./Ticket";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Table from "react-bootstrap/Table";
 
 function Tickets() {
   const [tickets, setTickets] = useState([]);
@@ -12,12 +15,27 @@ function Tickets() {
       });
   }, []);
 
+  let usersTickets = tickets.map((ticket) => {
+    return <Ticket key={ticket.id} ticket={ticket} />;
+  });
+
   return (
     <div>
-      <h1>Reserved Tickets</h1>
-      {tickets.map((ticket) => {
-        return <Ticket key={ticket.id} ticket={ticket} />;
-      })}
+      <Row>
+        <Col md={6}>
+          <h3>Reserved Tickets</h3>
+          <Table striped hover style={{ marginTop: "20px" }}>
+            <thead>
+              <tr>
+                <td>Concert name</td>
+                <td>Quantity of tickets</td>
+                <td>Cancel tickets</td>
+              </tr>
+            </thead>
+            <tbody>{usersTickets}</tbody>
+          </Table>
+        </Col>
+      </Row>
     </div>
   );
 }
