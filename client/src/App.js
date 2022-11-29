@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import NavBar from "./NavBar";
 import Home from "./Home";
@@ -12,28 +12,33 @@ import LogIn from "./LogIn";
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [concerts, setConcerts] = useState([]);
+  const [userTickets, setUserTickets] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("/me")
       .then((resp) => resp.json())
       .then((user) => {
+        setUserTickets(user.tickets);
         setCurrentUser(user);
+        console.log(user.tickets);
+        console.log(user);
       });
 
     fetch("/concerts")
       .then((resp) => resp.json())
       .then((concerts) => {
-        console.log(concerts);
         setConcerts(concerts);
       });
   }, []);
 
-  const handleLogOut = () => {
+  function handleLogOut() {
     setCurrentUser(null);
     fetch("/logout", {
       method: "DELETE",
     });
-  };
+    navigate("/");
+  }
 
   return (
     <div className="App">
@@ -46,8 +51,24 @@ function App() {
             <Home currentUser={currentUser} handleLogOut={handleLogOut} />
           }
         />
-        <Route path="/reservetickets" element={<ReserveTickets />} />
-        <Route path="/yourtickets" element={<Tickets />} />
+        <Route
+          path="/reservetickets"
+          element={
+            <ReserveTickets
+              userTickets={userTickets}
+              setUserTickets={setUserTickets}
+            />
+          }
+        />
+        <Route
+          path="/yourtickets"
+          element={
+            <Tickets
+              userTickets={userTickets}
+              setUserTickets={setUserTickets}
+            />
+          }
+        />
         <Route
           path="/concerts"
           element={<Concerts currentUser={currentUser} concerts={concerts} />}

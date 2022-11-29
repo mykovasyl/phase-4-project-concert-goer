@@ -1,29 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Ticket from "./Ticket";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Table from "react-bootstrap/Table";
 
-function Tickets() {
-  const [tickets, setTickets] = useState([]);
-
-  useEffect(() => {
-    fetch("/tickets")
-      .then((resp) => resp.json())
-      .then((tickets) => {
-        setTickets(tickets);
-      });
-  }, []);
-
+function Tickets({ userTickets, setUserTickets }) {
   function handleDelete(id) {
     fetch(`/tickets/${id}`, {
       method: "DELETE",
     });
-    let newTickets = tickets.filter((ticket) => ticket.id !== id);
-    setTickets(newTickets);
+    let newTickets = userTickets.filter((ticket) => ticket.id !== id);
+    setUserTickets(newTickets);
   }
 
-  let usersTickets = tickets.map((ticket) => {
+  let ticketsToDisplay = userTickets.map((ticket) => {
     return (
       <Ticket key={ticket.id} ticket={ticket} handleDelete={handleDelete} />
     );
@@ -42,7 +32,7 @@ function Tickets() {
                 <td>Cancel tickets</td>
               </tr>
             </thead>
-            <tbody>{usersTickets}</tbody>
+            <tbody>{ticketsToDisplay}</tbody>
           </Table>
         </Col>
       </Row>

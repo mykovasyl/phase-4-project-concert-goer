@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-function ReserveTickets() {
+function ReserveTickets({ userTickets, setUserTickets }) {
   const [ticketNumber, setTicketNumber] = useState(0);
   const location = useLocation();
   const { concert, userId } = location.state;
@@ -28,6 +28,7 @@ function ReserveTickets() {
     })
       .then((resp) => resp.json())
       .then((newTicket) => {
+        setUserTickets([...userTickets, newTicket]);
         navigate("/yourtickets");
       });
   }
