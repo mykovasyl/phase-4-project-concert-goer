@@ -15,8 +15,18 @@ function Tickets() {
       });
   }, []);
 
+  function handleDelete(id) {
+    fetch(`/tickets/${id}`, {
+      method: "DELETE",
+    });
+    let newTickets = tickets.filter((ticket) => ticket.id !== id);
+    setTickets(newTickets);
+  }
+
   let usersTickets = tickets.map((ticket) => {
-    return <Ticket key={ticket.id} ticket={ticket} />;
+    return (
+      <Ticket key={ticket.id} ticket={ticket} handleDelete={handleDelete} />
+    );
   });
 
   return (

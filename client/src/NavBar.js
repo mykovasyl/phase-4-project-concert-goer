@@ -17,9 +17,6 @@ function NavBar({ currentUser, handleLogOut }) {
           <Link as={Link} to="/concerts" style={linkStyling}>
             Get tickets to concerts
           </Link>
-          <Link as={Link} to="/yourconcerts" style={linkStyling}>
-            Your concerts
-          </Link>
           <Link as={Link} to="/scheduleaconcert" style={linkStyling}>
             Schedule a concert
           </Link>

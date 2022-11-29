@@ -2,13 +2,7 @@ import React from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import Button from "react-bootstrap/Button";
 
-function Ticket({ ticket }) {
-  function handleDelete() {
-    fetch(`/tickets/${ticket.id}`, {
-      method: "DELETE",
-    });
-  }
-
+function Ticket({ ticket, handleDelete }) {
   return (
     <>
       <tr>
@@ -16,7 +10,7 @@ function Ticket({ ticket }) {
         <td>{ticket.quantity}</td>
         <td>
           <Button variant="danger">
-            <FaTrashAlt onClick={handleDelete} />
+            <FaTrashAlt onClick={() => handleDelete(ticket.id)} />
           </Button>
         </td>
       </tr>
