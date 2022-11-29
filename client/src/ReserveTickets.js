@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function ReserveTickets() {
   const [ticketNumber, setTicketNumber] = useState(0);
   const location = useLocation();
   const { concert, userId } = location.state;
+  const navigate = useNavigate();
 
   function incrementDown() {
     setTicketNumber(ticketNumber - 1);
@@ -27,7 +28,7 @@ function ReserveTickets() {
     })
       .then((resp) => resp.json())
       .then((newTicket) => {
-        console.log(newTicket);
+        navigate("/yourtickets");
       });
   }
 
