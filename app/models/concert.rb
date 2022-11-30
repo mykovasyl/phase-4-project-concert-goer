@@ -3,6 +3,7 @@ class Concert < ApplicationRecord
   has_many :users, through: :tickets
 
   validates :name, presence: true
+  validates :total_tickets, numericality: { only_integer: true}
 
 #   @total_available ??
 

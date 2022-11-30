@@ -74,7 +74,7 @@ function SignUp() {
           <input
             name="city"
             type="text"
-            placeholder="city"
+            placeholder="City"
             value={signupForm.city}
             onChange={handleInputChange}
           />
@@ -84,7 +84,7 @@ function SignUp() {
           <input
             name="state"
             type="text"
-            placeholder="state"
+            placeholder="State"
             value={signupForm.state}
             onChange={handleInputChange}
           />

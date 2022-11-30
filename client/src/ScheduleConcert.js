@@ -63,7 +63,6 @@ function ScheduleConcert({ concerts, setConcerts }) {
           <input
             name="date"
             type="date"
-            placeholder="Date"
             value={formData.date}
             onChange={handleInputChange}
           />
@@ -71,9 +70,8 @@ function ScheduleConcert({ concerts, setConcerts }) {
         <label>
           Time:
           <input
-            name="name"
+            name="time"
             type="time"
-            placeholder="Name"
             value={formData.name}
             onChange={handleInputChange}
           />
@@ -83,7 +81,7 @@ function ScheduleConcert({ concerts, setConcerts }) {
           <input
             name="city"
             type="text"
-            placeholder="city"
+            placeholder="City"
             value={formData.city}
             onChange={handleInputChange}
           />
@@ -93,7 +91,7 @@ function ScheduleConcert({ concerts, setConcerts }) {
           <input
             name="state"
             type="text"
-            placeholder="state"
+            placeholder="State"
             value={formData.state}
             onChange={handleInputChange}
           />
