@@ -72,7 +72,7 @@ function ScheduleConcert({ concerts, setConcerts }) {
           <input
             name="time"
             type="time"
-            value={formData.name}
+            value={formData.time}
             onChange={handleInputChange}
           />
         </label>

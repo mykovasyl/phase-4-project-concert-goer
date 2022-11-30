@@ -25,7 +25,7 @@ class ConcertsController < ApplicationController
 private
 
 def concert_params
-  params.permit(:name, :performer, :date, :time, :city, :state)
+  params.permit(:name, :performer, :date, :time, :city, :state, :total_tickets)
 end
 
 def find_concert
