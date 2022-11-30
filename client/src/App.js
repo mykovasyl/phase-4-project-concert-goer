@@ -77,7 +77,12 @@ function App() {
           path="/concerts"
           element={<Concerts currentUser={currentUser} concerts={concerts} />}
         />
-        <Route path="/scheduleaconcert" element={<ScheduleConcert />} />
+        <Route
+          path="/scheduleaconcert"
+          element={
+            <ScheduleConcert concerts={concerts} setConcerts={setConcerts} />
+          }
+        />
         <Route
           path="/signup"
           element={<SignUp setCurrentUser={setCurrentUser} />}

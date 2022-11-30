@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function ScheduleConcert() {
+function ScheduleConcert({ concerts, setConcerts }) {
   const [error, setError] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
@@ -16,7 +16,7 @@ function ScheduleConcert() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("/signup", {
+    fetch("/concerts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +24,10 @@ function ScheduleConcert() {
       body: JSON.stringify(formData),
     })
       .then((resp) => resp.json())
-      .then(navigate("/login"));
+      .then((newConcert) => {
+        setConcerts([...concerts, newConcert]);
+        navigate("/concerts");
+      });
   }
 
   function handleInputChange(e) {
@@ -95,7 +98,17 @@ function ScheduleConcert() {
             onChange={handleInputChange}
           />
         </label>
-        <button type="submit">Sign up!</button>
+        <label>
+          Tickets available:
+          <input
+            name="total_tickets"
+            type="text"
+            placeholder="Tickets"
+            value={formData.total_tickets}
+            onChange={handleInputChange}
+          />
+        </label>
+        <button type="submit">Create</button>
         {error.map((err) => {
           return <h4 key={err}>{err}</h4>;
         })}
