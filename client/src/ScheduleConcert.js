@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function SignUp() {
+function ScheduleConcert() {
   const [error, setError] = useState([]);
-  const [signupForm, setSignupForm] = useState({
-    username: "",
-    password: "",
-    password_confirmation: "",
+  const [formData, setFormData] = useState({
     name: "",
+    performer: "",
+    date: "",
+    time: "",
     city: "",
     state: "",
+    total_tickets: "",
   });
-
   const navigate = useNavigate();
 
   function handleSubmit(e) {
@@ -21,51 +21,57 @@ function SignUp() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(signupForm),
+      body: JSON.stringify(formData),
     })
       .then((resp) => resp.json())
       .then(navigate("/login"));
   }
 
   function handleInputChange(e) {
-    setSignupForm({ ...signupForm, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
   return (
     <div>
-      <h1>Sign up now to schedule concerts and reserve your own tickets!</h1>
+      <h1>Schedule your concerts for others to attend!</h1>
       <form onSubmit={handleSubmit}>
-        <label>Choose a username:</label>
-        <input
-          name="username"
-          type="text"
-          placeholder="Username"
-          value={signupForm.username}
-          onChange={handleInputChange}
-        />
-        <label>Create a password:</label>
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={signupForm.password}
-          onChange={handleInputChange}
-        />
-        <label>Confirm password:</label>
-        <input
-          name="password_confirmation"
-          type="password"
-          placeholder="Confirm password"
-          value={signupForm.passwordConfirmation}
-          onChange={handleInputChange}
-        />
         <label>
-          Full name:
+          Concert name:
           <input
             name="name"
             type="text"
+            placeholder="Concert name"
+            value={formData.name}
+            onChange={handleInputChange}
+          />
+        </label>
+        <label>
+          Performer:
+          <input
+            name="performer"
+            type="performer"
+            placeholder="Performer"
+            value={formData.performer}
+            onChange={handleInputChange}
+          />
+        </label>
+        <label>
+          Date:
+          <input
+            name="date"
+            type="date"
+            placeholder="Date"
+            value={formData.date}
+            onChange={handleInputChange}
+          />
+        </label>
+        <label>
+          Time:
+          <input
+            name="name"
+            type="time"
             placeholder="Name"
-            value={signupForm.name}
+            value={formData.name}
             onChange={handleInputChange}
           />
         </label>
@@ -75,7 +81,7 @@ function SignUp() {
             name="city"
             type="text"
             placeholder="city"
-            value={signupForm.city}
+            value={formData.city}
             onChange={handleInputChange}
           />
         </label>
@@ -85,7 +91,7 @@ function SignUp() {
             name="state"
             type="text"
             placeholder="state"
-            value={signupForm.state}
+            value={formData.state}
             onChange={handleInputChange}
           />
         </label>
@@ -98,4 +104,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default ScheduleConcert;

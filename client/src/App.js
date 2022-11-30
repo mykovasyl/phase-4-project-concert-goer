@@ -8,6 +8,7 @@ import ReserveTickets from "./ReserveTickets";
 import Tickets from "./Tickets";
 import SignUp from "./SignUp";
 import LogIn from "./LogIn";
+import ScheduleConcert from "./ScheduleConcert";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -19,10 +20,13 @@ function App() {
     fetch("/me")
       .then((resp) => resp.json())
       .then((user) => {
-        setUserTickets(user.tickets);
-        setCurrentUser(user);
-        console.log(user.tickets);
-        console.log(user);
+        if (user.tickets === undefined) {
+          setUserTickets([]);
+          setCurrentUser(null);
+        } else {
+          setUserTickets(user.tickets);
+          setCurrentUser(user);
+        }
       });
 
     fetch("/concerts")
@@ -33,10 +37,10 @@ function App() {
   }, []);
 
   function handleLogOut() {
-    setCurrentUser(null);
     fetch("/logout", {
       method: "DELETE",
     });
+    setCurrentUser(null);
     navigate("/");
   }
 
@@ -73,6 +77,7 @@ function App() {
           path="/concerts"
           element={<Concerts currentUser={currentUser} concerts={concerts} />}
         />
+        <Route path="/scheduleaconcert" element={<ScheduleConcert />} />
         <Route
           path="/signup"
           element={<SignUp setCurrentUser={setCurrentUser} />}
