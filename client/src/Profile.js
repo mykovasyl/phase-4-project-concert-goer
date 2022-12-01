@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaTrashAlt, FaEdit, FaCheck } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
 import Button from "react-bootstrap/Button";
 import { Form } from "react-bootstrap";
 
@@ -50,14 +50,17 @@ function Profile({ currentUser, setCurrentUser }) {
       return (
         <>
           <td>{currentUser.name}</td>
+          <br />
           <td>{currentUser.city}</td>
+          <br />
           <td>{currentUser.state}</td>
+          <br />
           <td>
             <Button variant="warning" onClick={handleEdit}>
-              <FaEdit />
+              Edit Profile
             </Button>
-            <Button variant="danger">
-              <FaTrashAlt onClick={handleDelete} />
+            <Button variant="danger" onClick={handleDelete}>
+              Delete Account
             </Button>
           </td>
         </>
@@ -100,10 +103,10 @@ function Profile({ currentUser, setCurrentUser }) {
   }
 
   return (
-    <div>
+    <>
       <h3>Profile</h3>
       {tableDataOrInputs()}
-    </div>
+    </>
   );
 }
 

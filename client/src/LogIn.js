@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function LogIn({ setCurrentUser }) {
+  const [errors, setErrors] = useState([]);
   const [login, setLogin] = useState({
     username: "",
     password: "",
@@ -18,12 +19,16 @@ function LogIn({ setCurrentUser }) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(login),
-    })
-      .then((resp) => resp.json())
-      .then((loggedInUser) => {
-        setCurrentUser(loggedInUser);
-        navigate("/");
-      });
+    }).then((resp) => {
+      if (resp.ok) {
+        resp.json().then((loggedInUser) => {
+          setCurrentUser(loggedInUser);
+          navigate("/");
+        });
+      } else {
+        resp.json().then((err) => setErrors(err.errors));
+      }
+    });
   }
 
   return (
@@ -52,6 +57,7 @@ function LogIn({ setCurrentUser }) {
         </label>
         <button type="submit">Log In</button>
       </form>
+      {errors}
     </div>
   );
 }
