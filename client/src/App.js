@@ -9,6 +9,7 @@ import Tickets from "./Tickets";
 import SignUp from "./SignUp";
 import LogIn from "./LogIn";
 import ScheduleConcert from "./ScheduleConcert";
+import Profile from "./Profile";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -81,6 +82,15 @@ function App() {
           path="/scheduleaconcert"
           element={
             <ScheduleConcert concerts={concerts} setConcerts={setConcerts} />
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <Profile
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            />
           }
         />
         <Route

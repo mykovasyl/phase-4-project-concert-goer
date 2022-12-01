@@ -25,6 +25,7 @@ function ScheduleConcert({ concerts, setConcerts }) {
     })
       .then((resp) => resp.json())
       .then((newConcert) => {
+        console.log(newConcert);
         setConcerts([...concerts, newConcert]);
         navigate("/concerts");
       });

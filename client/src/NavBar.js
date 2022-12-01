@@ -23,7 +23,12 @@ function NavBar({ currentUser, handleLogOut }) {
         </>
       ) : null}
       {currentUser ? (
-        <button onClick={handleLogOut}>Log out</button>
+        <>
+          <Link as={Link} to="/profile" style={linkStyling}>
+            Profile
+          </Link>
+          <button onClick={handleLogOut}>Log out</button>
+        </>
       ) : (
         <>
           <Link as={Link} to="/login" style={linkStyling}>
