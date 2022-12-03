@@ -7,7 +7,7 @@ function Concerts({ currentUser, concerts }) {
   return (
     <div>
       {/* change concerts in blank to have options in drop down based on concert available */}
-      <h1>Concerts in ______</h1>
+      <h1>Reserve tickets for concerts</h1>
       {concerts.map((concert) => {
         return <Concert key={concert.id} concert={concert} userId={userId} />;
       })}

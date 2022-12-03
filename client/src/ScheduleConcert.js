@@ -10,7 +10,7 @@ function ScheduleConcert({ concerts, setConcerts }) {
     time: "",
     city: "",
     state: "",
-    total_tickets: "",
+    // total_tickets: "",
   });
   const navigate = useNavigate();
 
@@ -25,7 +25,6 @@ function ScheduleConcert({ concerts, setConcerts }) {
     })
       .then((resp) => resp.json())
       .then((newConcert) => {
-        console.log(newConcert);
         setConcerts([...concerts, newConcert]);
         navigate("/concerts");
       });
@@ -97,7 +96,7 @@ function ScheduleConcert({ concerts, setConcerts }) {
             onChange={handleInputChange}
           />
         </label>
-        <label>
+        {/* <label>
           Tickets available:
           <input
             name="total_tickets"
@@ -106,7 +105,7 @@ function ScheduleConcert({ concerts, setConcerts }) {
             value={formData.total_tickets}
             onChange={handleInputChange}
           />
-        </label>
+        </label> */}
         <button type="submit">Create</button>
         {error.map((err) => {
           return <h4 key={err}>{err}</h4>;
