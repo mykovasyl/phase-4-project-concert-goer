@@ -29,12 +29,6 @@ function App() {
           setCurrentUser(user);
         }
       });
-
-    fetch("/concerts")
-      .then((resp) => resp.json())
-      .then((concerts) => {
-        setConcerts(concerts);
-      });
   }, []);
 
   function handleLogOut() {
@@ -76,7 +70,13 @@ function App() {
         />
         <Route
           path="/concerts"
-          element={<Concerts currentUser={currentUser} concerts={concerts} />}
+          element={
+            <Concerts
+              currentUser={currentUser}
+              concerts={concerts}
+              setConcerts={setConcerts}
+            />
+          }
         />
         <Route
           path="/scheduleaconcert"

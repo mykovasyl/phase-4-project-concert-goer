@@ -17,15 +17,15 @@ puts "Seeding..."
 #   )
 # end
 
-10.times do |i|
-  Concert.create(
-    name: Faker::Company.name, 
-    performer: Faker::Artist.name, 
-    date: Faker::Date.between(from: 2.days.from_now, to: '2025-09-10'), 
-    time: Faker::Time.forward(days: 25), 
-    city: Faker::Address.city, 
-    state: Faker::Address.state_abbr,
-    total_tickets: Faker::Number.within(range: 25..200) )
-end
+# 10.times do |i|
+#   Concert.create(
+#     name: Faker::Company.name, 
+#     performer: Faker::Artist.name, 
+#     date: Faker::Date.between(from: 2.days.from_now, to: '2025-09-10'), 
+#     time: Faker::Time.forward(days: 25), 
+#     city: Faker::Address.city, 
+#     state: Faker::Address.state_abbr,
+#     total_tickets: Faker::Number.within(range: 25..200) )
+# end
 
 puts "Seeding done!"

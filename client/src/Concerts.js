@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Concert from "./Concert";
 
-function Concerts({ currentUser, concerts }) {
+function Concerts({ currentUser, concerts, setConcerts }) {
   const userId = currentUser.id;
+
+  useEffect(() => {
+    fetch("/concerts")
+      .then((resp) => resp.json())
+      .then((concerts) => {
+        setConcerts(concerts);
+      });
+  }, []);
 
   return (
     <div>
