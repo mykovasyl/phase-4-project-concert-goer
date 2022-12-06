@@ -99,7 +99,12 @@ function App() {
         />
         <Route
           path="/login"
-          element={<LogIn setCurrentUser={setCurrentUser} />}
+          element={
+            <LogIn
+              setCurrentUser={setCurrentUser}
+              setUserTickets={setUserTickets}
+            />
+          }
         />
         <Route
           path="*"

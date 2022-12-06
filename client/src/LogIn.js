@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function LogIn({ setCurrentUser }) {
+function LogIn({ setCurrentUser, setUserTickets }) {
   const [errors, setErrors] = useState([]);
   const [login, setLogin] = useState({
     username: "",
@@ -23,6 +23,7 @@ function LogIn({ setCurrentUser }) {
       if (resp.ok) {
         resp.json().then((loggedInUser) => {
           setCurrentUser(loggedInUser);
+          setUserTickets(loggedInUser.tickets);
           navigate("/");
         });
       } else {
