@@ -8,6 +8,7 @@ function Concerts({ currentUser, concerts, setConcerts, userTickets }) {
     fetch("/concerts")
       .then((resp) => resp.json())
       .then((concerts) => {
+        console.log(concerts);
         setConcerts(concerts);
       });
   }, [userTickets, currentUser]);
