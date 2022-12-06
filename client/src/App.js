@@ -73,6 +73,7 @@ function App() {
           element={
             <Concerts
               currentUser={currentUser}
+              userTickets={userTickets}
               concerts={concerts}
               setConcerts={setConcerts}
             />

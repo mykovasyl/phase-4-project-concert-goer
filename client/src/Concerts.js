@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Concert from "./Concert";
 
-function Concerts({ currentUser, concerts, setConcerts }) {
+function Concerts({ currentUser, concerts, setConcerts, userTickets }) {
   const userId = currentUser.id;
 
   useEffect(() => {
@@ -10,7 +10,7 @@ function Concerts({ currentUser, concerts, setConcerts }) {
       .then((concerts) => {
         setConcerts(concerts);
       });
-  }, []);
+  }, [userTickets]);
 
   return (
     <div>
