@@ -10,7 +10,7 @@ function Concerts({ currentUser, concerts, setConcerts, userTickets }) {
       .then((concerts) => {
         setConcerts(concerts);
       });
-  }, [userTickets]);
+  }, [userTickets, currentUser]);
 
   return (
     <div>

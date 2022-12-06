@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 function Concert({ concert, userId }) {
   const [modalShow, setModalShow] = useState(false);
-  const [usersAttending, setUsersAttending] = useState(concert.users);
 
   function handleModalShow() {
     setModalShow(!modalShow);
@@ -37,7 +36,7 @@ function Concert({ concert, userId }) {
         </Link>
         <button onClick={handleModalShow}>Close</button>
         <h4>Users attending:</h4>
-        {usersAttending.map((user) => {
+        {concert.users.map((user) => {
           return <p>{user.username}</p>;
         })}
       </ReactModal>
