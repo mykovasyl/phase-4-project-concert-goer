@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 function Concert({ concert, userId }) {
   const [modalShow, setModalShow] = useState(false);
 
+  const uniqueUsers = [...new Set(concert.users.map((user) => user.username))];
+
   function handleModalShow() {
     setModalShow(!modalShow);
   }
@@ -36,8 +38,8 @@ function Concert({ concert, userId }) {
         </Link>
         <button onClick={handleModalShow}>Close</button>
         <h4>Users attending:</h4>
-        {concert.users.map((user) => {
-          return <p>{user.username}</p>;
+        {uniqueUsers.map((username) => {
+          return <p>{username}</p>;
         })}
       </ReactModal>
       {/* how do i associate the ReactModal to the button? is there a different way to present ReactModal? */}
