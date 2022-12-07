@@ -56,6 +56,20 @@ You can use the following commands to run the application servers:
 
 Shut down servers with control+C.
 
+## Migrations
+
+To set up the database using migrations, run 'rails db:migrate'.
+
+If changes need to be made to a migration, first run 'rails db:rollback' until you've rolled back the migration you're looking to change. After making the necessary changes, run 'rails db:migrate' once again.
+
+New migrations can be created using the rails generator 'rails g migration NAME_OF_MIGRATION'. Remember to use '--no-test-framework' at the end of a generator if you're not building out your own test code.
+
+If you make a mistake when creating the generator in CLI, run 'rails d migration NAME_OF_MIGRATION'
+
 ## Seeding
 
 The seed file includes a template for seeding data. To make seeding easier, the faker gem was included in the Gemfile. Get more info on [faker gem here](https://github.com/faker-ruby/faker)
+
+Run 'rails db:seed' to seed data.
+
+If there are issues with the seed data and new data needs to be used, comment out the seed file and run 'rails db:reset' to drop and re-setup the DB.
