@@ -4,7 +4,9 @@
 
 Concert Go-er allows users to schedule their own and reserve tickets for concerts. Users who reserve tickets for a concert will have their username displayed on the concert modal as attending. This simple app is built to show the relationship between 3 models with 2 has_many through associations.
 
-Note on routing: react-router-dom v6 was used. When changing front-end Routes, please double check your syntax. For more information, [check out this blog](https://blog.webdevsimplified.com/2022-07/react-router/)
+[Video walkthrough](https://youtu.be/7UTy35iW76I)
+
+**Note on routing**: react-router-dom v6 was used. When changing front-end Routes, please double check your syntax. For more information, [check out this blog](https://blog.webdevsimplified.com/2022-07/react-router/)
 
 ## Cloning To Run Locally
 
@@ -51,6 +53,8 @@ You can use the following commands to run the application servers:
 - `rails s`: run the backend on [http://localhost:3000](http://localhost:3000)
 - `npm start --prefix client`: run the frontend on
   [http://localhost:4000](http://localhost:4000)
+
+Shut down servers with control+C.
 
 ## Seeding
 
