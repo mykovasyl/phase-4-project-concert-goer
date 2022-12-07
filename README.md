@@ -76,7 +76,7 @@ If you would like to run a localhost server, include the following changes to yo
 
 Make sure to commit these changes to your cloned repo and run `bundle install` before launching the servers.
 
-## Starting the servers
+# Starting the servers
 
 You can use the following commands to run the application servers:
 
