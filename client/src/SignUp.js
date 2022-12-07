@@ -22,9 +22,15 @@ function SignUp() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(signupForm),
-    })
-      .then((resp) => resp.json())
-      .then(navigate("/login"));
+    }).then((resp) => {
+      if (resp.ok) {
+        resp.json().then(navigate("/login"));
+      } else {
+        resp.json().then((err) => setError(err.errors));
+      }
+    });
+    // .then((resp) => resp.json())
+    // .then(navigate("/login"));
   }
 
   function handleInputChange(e) {
