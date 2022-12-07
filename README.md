@@ -37,6 +37,25 @@ $ git remote add origin git@github.com:your-username/your-project-name.git
 $ git push -u origin main
 ```
 
+# Frontend set up: npm and local server
+
+## NPM install
+
+Run 'npm install --prefix client' to install the package for the front end.
+
+## Localhost Set-up
+
+The current version of this application is set up to be deployed.
+
+If you would like to run a localhost server, include the following changes to your cloned repo:
+
+1. In the `Gemfile`, replace `gem 'pg', '~> 1.1'` with `gem 'sqlite3', '~>
+1.4'`.
+2. In the `database.yml` file, change the line `adapter: postgresql` to
+   `adapter: sqlite3`.
+
+Make sure to commit these changes to your cloned repo and run `bundle install` before launching the servers.
+
 # Backend set up: migrations and seeding
 
 ## Migrations
@@ -56,25 +75,6 @@ The seed file includes a template for seeding data. To make seeding easier, the 
 Run 'rails db:seed' to seed data.
 
 If there are issues with the seed data and new data needs to be used, comment out the seed file and run 'rails db:reset' to drop and re-setup the DB.
-
-# Frontend set up: npm and local server
-
-## NPM install
-
-Run 'npm install --prefix client' to install the package for the front end.
-
-## Localhost Set-up
-
-The current version of this application is set up to be deployed.
-
-If you would like to run a localhost server, include the following changes to your cloned repo:
-
-1. In the `Gemfile`, replace `gem 'pg', '~> 1.1'` with `gem 'sqlite3', '~>
-1.4'`.
-2. In the `database.yml` file, change the line `adapter: postgresql` to
-   `adapter: sqlite3`.
-
-Make sure to commit these changes to your cloned repo and run `bundle install` before launching the servers.
 
 # Starting the servers
 
