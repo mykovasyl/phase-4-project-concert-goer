@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
+  # get "/searchconcert", to: "concerts#search"
+
   resources :concerts, only: [:index, :create]
   resources :tickets, only: [:index, :create, :destroy]
   resources :users, except: [:new, :edit, :index]

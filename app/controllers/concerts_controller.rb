@@ -1,5 +1,6 @@
 class ConcertsController < ApplicationController
-  
+  skip_before_action :authorize, only: :search
+
   def index 
     concerts = Concert.all 
     render json: concerts
@@ -9,6 +10,13 @@ class ConcertsController < ApplicationController
     concert = Concert.create!(concert_params)
     render json: concert, status: :created
   end
+
+  # def search
+  #   concerts = Concert.all
+  #   searched_concerts = concerts.select{|concert| concert.name.include?(params[:search])}
+  #   render json: searched_concerts, status: :ok
+  #   concerts_to_display = Concert.where(name: )
+  # end
 
   # def update
   #   concert_to_update = find_concert

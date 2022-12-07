@@ -25,7 +25,7 @@ puts "Seeding..."
 #     time: Faker::Time.forward(days: 25), 
 #     city: Faker::Address.city, 
 #     state: Faker::Address.state_abbr,
-#     total_tickets: Faker::Number.within(range: 25..200) )
+#     )
 # end
 
 puts "Seeding done!"
